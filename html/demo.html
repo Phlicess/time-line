@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时间线演示</title>
+    <link rel="stylesheet" type="text/css" href="../style/index.css"/>
+</head>
+<body>
+<div class="time" id="time" style="margin-top: 50px;">
+
+
+    <!-- 时间线 -->
+    <!--<div class="time-line" id="timeLine">-->
+
+        <!--&lt;!&ndash; 播放暂停按钮 &ndash;&gt;-->
+        <!--<a class="play-btn" state="pause"></a>-->
+
+        <!--&lt;!&ndash; 时间气泡 &ndash;&gt;-->
+        <!--<span class="time-bubble">00:00:00</span>-->
+
+        <!--&lt;!&ndash; 滚动轨道 &ndash;&gt;-->
+        <!--<div class="rail-way">-->
+            <!--&lt;!&ndash; 控制按钮 &ndash;&gt;-->
+                <!--<span class="control-bar">-->
+                    <!--<span class="control-btn"></span>-->
+                <!--</span>-->
+        <!--</div>-->
+
+        <!--&lt;!&ndash; 起始结束时间 &ndash;&gt;-->
+        <!--<div class="start-end-time">-->
+            <!--<p>2016-01-01 00:00:00</p>-->
+            <!--<p>2016-01-01 00:00:00</p>-->
+        <!--</div>-->
+
+    </div>
+
+    <button id="stopPlay">停止</button>
+    <button id="pausePlay">暂停</button>
+    <button id="resumePlay">播放</button>
+    <button id="setOption">设置播放时间</button>
+
+
+</div>
+</body>
+
+<script src="../public/jquery-2.2.3.min.js"></script>
+<script src="../js/time.js"></script>
+
+<script>
+
+    $('#time').timeLine({
+        startTime: '2015-8-23 0:00:00',  //时间线开始的时间
+        endTime: '2015-9-10 0:00:00',  //时间线结束时间
+        interval: 1,  //时间线滚动的时候滚动的间隔, 比如:一天  默认:1
+        intervalTime: 1000,  //每个间隔的毫秒数
+        intervalUnit: 'day',  //时间线滚动的时候的时间间隔单位,  比如:小时-hour (其他参数: minute, hour, day, month, year), 默认hour
+        width: 1000,  //时间轴的宽度, 单位px, 默认800px
+        bgColor: '#333',  //时间线背景色
+        frontColor: '#fff',  //时间线前景色
+        repeat: 'forever',  //重复播放次数  其他值: forever(一直重复运行)
+        autoPlay: true  //是否自动播放
+//        callback: null  //每个间隔执行后的回调函数, 参数是当前滚动的时间
+    });
+
+    $('#stopPlay').click(function () {
+        $('#time').timeLine.stopPlay();
+    });
+
+    $('#pausePlay').click(function () {
+        $('#time').timeLine.pausePlay();
+    });
+
+    $('#resumePlay').click(function () {
+        $('#time').timeLine.resumePlay();
+    });
+
+    //设置播放其实结束时间
+    $('#setOption').click(function () {
+        var obj = {
+            startTime: '2000-01-01 12:00:00',
+            endTime: '2000-01-20 12:00:00'
+        };
+
+        $('#time').timeLine.setOption(obj);
+    });
+
+</script>
+</html>

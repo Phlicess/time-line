@@ -1,0 +1,128 @@
+/*
+ 前景色: #337AB7
+ 背景色: #333
+ 宽度: 800px
+*/
+
+/* 时间线整体样式 */
+.time-line {
+    position: relative;
+    float: left;
+    width: 800px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #333;
+}
+
+.time-line:hover {
+    cursor: pointer;
+}
+
+/* 播放暂停按钮 */
+.play-btn {
+    float: left;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+    /*background-color: aquamarine;*/
+    /*border-right: #292929 solid 1px;*/
+}
+
+/* 播放按钮状态 */
+.play-btn-left,
+.play-btn-right {
+    display: block;
+    float: left;
+    height: 10px;
+    width: 0;
+    margin: 0;
+    box-sizing: content-box;
+}
+
+.play-btn-left {
+    border-right: 0 solid #337AB7;
+    border-left: 8px solid #337AB7;
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
+}
+
+.play-btn-right {
+    height: 0;
+    margin-top: 5px;
+    border-left: 0 solid #337AB7;
+    border-left: 8px solid #337AB7;
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
+}
+
+/* 动态时间显示气泡 */
+.time-bubble {
+    display: inline-block;
+    position: absolute;
+    top: -20px;
+    left: 23px;
+    height: 20px;
+    width: 110px;
+    line-height: 20px;
+    padding: 0 0px;
+    color: #fff;
+    font-size: 13px;
+    background-color: #333;
+    opacity: .8;
+    border-radius: 3px 3px 0 0;
+    text-align: center;
+}
+
+/* 滚动轨道 */
+.rail-way {
+    float: left;
+    width: 699px;
+    height: 12px;
+    margin: 14px 30px 0 30px;
+    background-color: #191919;
+    border-radius: 6px;
+}
+
+/* 控制按钮 */
+.control-bar {
+    display: block;
+    width: 30px;
+    height: 12px;
+    background-color: #555;
+    border-radius: 6px;
+}
+
+.control-btn {
+    float: right;
+    display: block;
+    height: 12px;
+    width: 30px;
+    background-color: #337AB7;
+    border-radius: 6px;
+}
+
+.control-btn:hover {
+    cursor: ew-resize;
+}
+
+/* 起始结束时间 */
+.start-end-time {
+    float: left;
+    width: 759px;
+    height: 15px;
+}
+
+.start-end-time p {
+    float: left;
+    height: 15px;
+    line-height: 15px;
+    color: #fff;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 10px;
+}
+
+.start-end-time p:nth-child(2) {
+    float: right;
+}

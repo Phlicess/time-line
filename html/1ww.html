@@ -1,0 +1,64 @@
+<!--vision 0.8 【耗時672ms】終極優化 -->
+<script>
+    var t1 = new Date();
+</script>
+<html>
+<head>
+    <title></title>
+    <script>
+        function testTime() {
+            var t2 = new Date();
+            alert(t2 - t1 + "ms");
+        }
+    </script>
+</head>
+<body onload="testTime();">
+<div id="tableDiv"></div>
+<script>
+    var maxRow = 30000;
+    var maxCol = 8;
+    var strTbody = ["<table border='1'><tbody>"];
+    for (var i = 0; i < maxRow; i++) {
+        strTbody.push("<tr>");
+        for (var j = 0; j < maxCol; j++) {
+            strTbody.push("<td>test</td>");
+        }
+        strTbody.push("</tr>");
+    }
+    strTbody.push("</tbody></table>");
+    var obj = document.getElementById("tableDiv");
+    obj.innerHTML = strTbody.join("");
+</script>
+</body>
+</html>
+
+
+<!--<html>-->
+<!--<head>-->
+    <!--<script>-->
+        <!--function testTime() {-->
+            <!--var t2 = new Date();-->
+            <!--alert(t2 - t1 + "ms");-->
+        <!--}-->
+    <!--</script>-->
+<!--</head>-->
+<!--<body onload="testTime()">-->
+<!--<div id="tableDiv"></div>-->
+<!--<script>-->
+    <!--var maxRow = 30000;-->
+    <!--var maxCol = 8;-->
+    <!--var strTbl = "<table border='1'><tbody>";-->
+    <!--var strTbody = '';-->
+    <!--for (var i = 0; i < maxRow; i++) {-->
+        <!--strTbody += "<tr>";-->
+        <!--for (var j = 0; j < maxCol; j++) {-->
+            <!--strTbody += "<td>test</td>";-->
+        <!--}-->
+        <!--strTbody += "</tr>";-->
+    <!--}-->
+    <!--strTbl += strTbody + "</tbody></table>";-->
+    <!--var obj = document.getElementById("tableDiv");-->
+    <!--obj.innerHTML = strTbl;-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

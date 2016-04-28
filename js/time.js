@@ -21,7 +21,6 @@
  * 创建闭包, 实现私有函数和全局函数
  */
 (function ($) {
-
     //声明需要用到全局变量
     var elem = null,
         controlBtnInitWidth = 29,  //控制按钮默认宽度
@@ -36,6 +35,30 @@
     //dom节点
     var controlBar, timeBubble, startEndTime, timeLine,
         controlBtn, playBtn, railWay;
+
+    //html模板 
+    var htmltmp = '<!-- 时间线 -->' +
+        '<div class="time-line" id="timeLine">' +
+        '<!-- 播放暂停按钮 -->' +
+        '<a class="play-btn" id="playBtn" state="pause">' +
+        '<span class="play-btn-left" id="playBtnLeft"></span>' +
+        '<span class="play-btn-right" id="playBtnRight"></span>' +
+        '</a>' +
+        '<!-- 时间气泡 -->' +
+        '<span class="time-bubble" id="timeBubble">00:00:00</span>' +
+        '<!-- 滚动轨道 -->' +
+        '<div class="rail-way" id="railWay">' +
+        '<!-- 控制按钮 -->' +
+        '<span class="control-bar" id="controlBar">' +
+        '<span class="control-btn" id="controlBtn"></span>' +
+        '</span>' +
+        '</div>' +
+        '<!-- 起始结束时间 -->' +
+        '<div class="start-end-time" id="startEndTime">' +
+        '<p>2016-01-01 00:00:00</p>' +
+        '<p>2016-01-01 00:00:00</p>' +
+        '</div>' +
+        '</div>';
 
     //需要暴露出的初始化函数
     $.fn.timeLine = function (optionObj) {
@@ -140,7 +163,7 @@
             }
 
             //如果是第一次初始化
-            if(!option.isReset){
+            if (!option.isReset) {
                 //播放暂停按钮点击事件, 注册
                 playBtnCLick();
             }
@@ -153,9 +176,9 @@
 
             //是否自动播放
             if (option.autoPlay) {
-                if(option.callback){
+                if (option.callback) {
                     controlBarPlay(option.callback);
-                }else {
+                } else {
                     controlBarPlay();
                 }
 
@@ -179,9 +202,14 @@
                 alreadyPlayCount = option.repeat;
 
             //为元素添加时间线, 初始化绑定函数
-            if(!option.isReset){
-                elem.load('../html/time.html', setElementVal);
-            }else {
+            if (!option.isReset) {
+                //填充html标签
+                elem.append(htmltmp);
+                
+                //执行的一些初始化函数
+                setElementVal();
+                //elem.load('../html/time.html', setElementVal);
+            } else {
                 setElementVal();
             }
         };
@@ -609,9 +637,9 @@
         //时间气泡改变
         timeBubbleChange();
 
-        if(option.callback){
+        if (option.callback) {
             controlBarPlay(option.callback);
-        }else {
+        } else {
             controlBarPlay();
         }
     };
@@ -625,9 +653,9 @@
         $.fn.timeLine.stopPlay();
 
         //循环复制原本属性, 为了保证原本的属性有效
-        for(var prop in option){
+        for (var prop in option) {
             //如果此属性没有被重新赋值, 取旧值
-            if(!optionBySet[prop]){
+            if (!optionBySet[prop]) {
                 optionBySet[prop] = option[prop];
             }
         }
